@@ -6,7 +6,7 @@ sh setup1.sh
 ```
 
 # Training
-select the nano/small/medium model and run the traing shell
+- select the nano/small/medium model and run the traing shell
 ```Shell
 sh train.sh
 ```
