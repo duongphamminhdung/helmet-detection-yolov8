@@ -15,6 +15,7 @@ wget https://github.com/ultralytics/assets/releases/download/v8.1.0/yolov8m.pt
 
 #download data
 cd ../data
+# curl -L "https://app.roboflow.com/ds/7sVYTMoSiw?key=MCtAccwOGv" > roboflow.zip; unzip roboflow.zip; rm roboflow.zip  #custom dataset with augmentation
 curl -L "https://universe.roboflow.com/ds/jFHhzo5mX4?key=esYjvWKyyK" > roboflow.zip; unzip roboflow.zip; rm roboflow.zip
 echo download data
 
