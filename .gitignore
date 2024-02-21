@@ -1,4 +1,8 @@
 *.jpg
 *.txt
 *.pt
+*.pyc
+*.csv
 *.yaml
+*.cache
+weights

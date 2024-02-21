@@ -21,10 +21,10 @@ def parse_args():
                         help='path to model')
     parser.add_argument('--cuda', action='store_true', default=True,
                         help='use cuda.')
+    parser.add_argument('--save_period', type=int,
+                            default=10, help='How long does the program save the model')
     parser.add_argument('--epochs', type=int,
                             default=100, help='Total number of training epochs. Each epoch represents a full pass over the entire dataset. Adjusting this value can affect training duration and model performance.')
-    parser.add_argument('--eval_epoch', type=int,
-                            default=5, help='interval between evaluations')
     parser.add_argument('--save_folder', default='weights/', type=str, 
                         help='Save folder')
     parser.add_argument('--num_workers', default=8, type=int, 
@@ -38,7 +38,7 @@ def parse_args():
 
     parser.add_argument('--lr0', default=1e-3, type=float, 
                         help='Initial learning rate (i.e. SGD=1E-2, Adam=1E-3) . Adjusting this value is crucial for the optimization process, influencing how rapidly model weights are updated.')
-    parser.add_argument('--lrf', default=1e-3, type=float, 
+    parser.add_argument('--lrf', default=1e-2, type=float, 
                         help='Final learning rate as a fraction of the initial rate = (lr0 * lrf), used in conjunction with schedulers to adjust the learning rate over time.')
     parser.add_argument('--momentum', default=0.9, type=float, 
                         help='Momentum value for optim')
@@ -71,20 +71,36 @@ def train():
 
     model = YOLO(
         model=args.path,
-        save=True,
-        save_period=10,
-        project='helmet-detection-'+model_name,
-        name=args.name,
-        exist_ok=True,
-        device = 0,
-        workers=args.num_workers,
-        seed=args.seed,
-        lr0=args.lr0,
-        lrf=args.lrf,
-        momentum=args.momentum,
-        weight_decay=args.weight_decay,
-        warmup_epochs=args.warmup_epochs,
+        # save_period=10,
+        # project=args.save_folder+model_name,
+        # name=args.name,
+        # exist_ok=True,
+        # device = 0,
+        # workers=args.num_workers,
+        # seed=args.seed,
+        # lr0=args.lr0,
+        # lrf=args.lrf,
+        # momentum=args.momentum,
+        # weight_decay=args.weight_decay,
+        # warmup_epochs=args.warmup_epochs,
     )
+    results = model.train(data='/root/helmet-detection-yolov8/data/data.yaml', 
+                            epochs=args.epochs, 
+                            imgsz=640, 
+                            save=True,
+                            save_period=args.save_period,
+                            project=args.save_folder+model_name,
+                            name=args.name,
+                            exist_ok=True,
+                            device = 0,
+                            workers=args.num_workers,
+                            seed=args.seed,
+                            lr0=args.lr0,
+                            lrf=args.lrf,
+                            momentum=args.momentum,
+                            weight_decay=args.weight_decay,
+                            warmup_epochs=args.warmup_epochs,)
+
 
 
 if __name__ == '__main__':
