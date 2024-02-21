@@ -25,7 +25,7 @@ def parse_args():
                             default=10, help='How long does the program save the model')
     parser.add_argument('--epochs', type=int,
                             default=100, help='Total number of training epochs. Each epoch represents a full pass over the entire dataset. Adjusting this value can affect training duration and model performance.')
-    parser.add_argument('--save_folder', default='weights/', type=str, 
+    parser.add_argument('--save_folder', default="", type=str, 
                         help='Save folder')
     parser.add_argument('--num_workers', default=8, type=int, 
                         help='Number of workers used in dataloading')
@@ -89,8 +89,8 @@ def train():
                             imgsz=640, 
                             save=True,
                             save_period=args.save_period,
-                            project=args.save_folder+model_name,
-                            name=args.name,
+                            project=args.name,
+                            name=args.save_folder+model_name,
                             exist_ok=True,
                             device = 0,
                             workers=args.num_workers,
