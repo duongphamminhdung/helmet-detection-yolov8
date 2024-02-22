@@ -5,6 +5,6 @@ python train.py \
         --batch_size 32 \
         --num_workers 8 \
         --seed 2506 \
-        --name "21Feb" \
-        --save_period 3 \
+        --name "" \
+        --save_period 5 \
         # --save_folder "" \
