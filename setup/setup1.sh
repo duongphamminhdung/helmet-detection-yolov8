@@ -1,6 +1,6 @@
 #config git
-git config --global user.email "duongphamminhdung@gmail.com"
-git config --global user.name "duongphamminhdung"
+# git config --global user.email "duongphamminhdung@gmail.com"
+# git config --global user.name "duongphamminhdung"
 
 #install requirements
 echo pip install ultralytics
