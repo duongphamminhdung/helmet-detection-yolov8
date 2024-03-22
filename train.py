@@ -16,7 +16,7 @@ from data.transform import Augmentation, BaseTransform
 from ultralytics import YOLO
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='YOLOv2 Detection')
+    parser = argparse.ArgumentParser(description='Helmet Detection')
     parser.add_argument('-p', '--path', default=None, type=str, 
                         help='path to model')
     parser.add_argument('--cuda', action='store_true', default=True,
